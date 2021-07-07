@@ -1,0 +1,63 @@
+
+.masthead {
+  height: 75vh;
+  margin-top: 107px;
+  /* min-height: 800px; */
+  background: url('../storage/background-image.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.margin-top {
+  margin-top: 107px;
+
+}
+.input-container {
+  
+    display: flex;
+    width: 100%;
+}
+  
+  .icon {
+    padding: 10px;
+    background: transparent;
+    color: white;
+    min-width: 50px;
+    text-align: center;
+  }
+  
+  .input-field {
+    border-radius: 10px;
+    border: none;
+    width: 100%;
+    padding: 4px 50px;
+    outline: none;
+  }
+
+.dropdown:hover .dropdown-menu{
+    display: block;
+}
+
+.dropdown-item {
+  margin: 2px;
+}
+
+.borderLeft{
+  border-left: 5px  solid #63CE42;
+}
+.bg-lightblue {
+  background-color: #0099FF;
+}
+.text-lightblue {
+  color: #0099FF;
+}
+.bg-course{
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; height: 75vh;
+  margin-top: 107px;
+}
+
+.border-radius-20 {
+  border-radius: 20px;
+}

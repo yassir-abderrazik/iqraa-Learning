@@ -1,0 +1,17 @@
+
+.vertical-center {
+      min-height: 100%; 
+      min-height: 90vh; 
+      display: flex;
+      align-items: center;
+  }
+.login-card {
+   background-color: white;
+   border-radius: 30px;
+  
+  }
+.form-control:focus {
+    border: none;
+    box-shadow: 0 0 5pt 2pt #63ce42;
+    outline-width: 0px;
+  }

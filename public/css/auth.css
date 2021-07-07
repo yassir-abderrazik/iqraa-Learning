@@ -1,0 +1,18 @@
+#background-image {
+  background: url('../storage/login.svg') no-repeat  center  bottom fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.vertical-center {
+    min-height: 100%; 
+    min-height: 90vh; 
+    display: flex;
+    align-items: center;
+}
+.login-card {
+ background-color: white;
+ border-radius: 30px;
+
+}
