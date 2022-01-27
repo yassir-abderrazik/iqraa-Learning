@@ -68,12 +68,13 @@
 
                             <div class="progress">
                                 <div class="progress-bar bg-lightblue" role="progressbar" style="width: @if ($i=='0' ) @else {{ ceil(($i * 100) / sizeof($course->episodes)) }}% @endif" aria-valuenow="
-                                                                                                                                                                                                                                                                                                                        
-                                                                                                                                                                                                                                                                           
-                                                                                                                                                                                                                           
-                                                                                                                                                                           
-                                                                                                                           
-                                                                       @if ($i=='0' )
+                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                               
+                                                                                                                                                                               
+                                                                                                                               
+                                                                            @if ($i=='0'
+                                    )
                                 @else {{ ceil(($i * 100) / sizeof($course->episodes)) }}
                                     @endif"
                                     aria-valuemin="0" aria-valuemax="100">

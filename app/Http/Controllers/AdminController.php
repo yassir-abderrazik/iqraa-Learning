@@ -2,15 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\NewUserMail;
 use App\Mail\ValidationCourse;
+use App\Mail\ValidationFormateurRequestReject;
 use App\Models\Course;
 use App\Models\Formateur;
+use App\Models\RequestFormateur;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Str;
 
 class AdminController extends Controller
 {
@@ -82,22 +86,35 @@ class AdminController extends Controller
             'data' => $data,
         ]);
     }
-    public function courseValidation()
+
+    public function formateursRequest()
     {
-        $courses = Course::where('validation', 0)->with('formateurs.user')->get();
-        return view('admin.courses.courseValidation', [
-            'courses' => $courses,
+        $requests = RequestFormateur::where('validation', null)->orderBy('created_at', 'desc')->get();
+        return view('admin.validationFormateurRequest', [
+            'requests' => $requests,
         ]);
     }
-    public function validateCourse($id)
+    public function validateFormateurRequest(Request $request, $id)
     {
-        $course = Course::with('formateurs.user')->find($id);
-        $course->validation = 1;
-        foreach ($course->formateurs as $formateur) {
-            Mail::to($formateur->user->email)->send(new ValidationCourse($course));
+        $demande = RequestFormateur::find($id);
+        if ($request->validation == 1) {
+            $password = Str::random(14);
+            $user =  User::create([
+                'name' => $demande->name,
+                'email' => $demande->email,
+                'password' => Hash::make($password),
+                'type' => 'formateur',
+            ]);
+            $formateur = new Formateur();
+            $formateur->formateur_id = $user->id;
+            $user->formateur()->save($formateur);
+            Mail::to($demande->email)->send(new NewUserMail($user, $password));
+        } else {
+            Mail::to($demande->email)->send(new ValidationFormateurRequestReject($demande));
         }
-        $course->save();
-        Alert::success('Validé', '');
-        return redirect()->route('courseValidation');
+        $demande->validation = $request->validation;
+        $demande->save();
+        Alert::success('done', 'success');
+        return redirect()->route('formateursRequestAdmin');
     }
 }

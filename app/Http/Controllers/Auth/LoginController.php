@@ -34,6 +34,8 @@ class LoginController extends Controller
             return redirect()->route('adminDashboard');
         } elseif ($user->type == 'formateur') {
             return redirect()->route('formateurdashboard');
+        } elseif ($user->type == 'validator') {
+            return redirect()->route('dashboardValidate');
         } else {
             return redirect()->route('studentDashboard');
         }

@@ -8,6 +8,7 @@
 
     <title>IQRAA Learning</title>
     {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
+    <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/moment.min.js') }}"></script>
     <!-- Styles -->
@@ -108,8 +109,9 @@
                                             <a href="{{ route('studentDashboard') }}" class="dropdown-item">Dashboard</a>
 
                                         @endif
-                                        <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                        document.getElementById('logout-form').submit();"
+                                        <a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                                                    document.getElementById('logout-form').submit();"
                                             class=" dropdown-item text-dark">
                                             Se Déconnecter </a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST"
@@ -205,6 +207,7 @@
 </body>
 
 @yield('scripts')
+@include('sweetalert::alert')
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
 integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous">
 </script>

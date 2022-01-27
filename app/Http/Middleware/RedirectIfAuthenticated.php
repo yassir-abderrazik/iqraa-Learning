@@ -24,6 +24,8 @@ class RedirectIfAuthenticated
                 return view('admin.dashboard');
             } elseif (Auth::user()->type == "formateur") {
                 return view('formateur.dashboard');
+            } elseif (Auth::user()->type == "validator") {
+                return view('validator.dashboard');
             } else {
                 return view('student.dashboard');
             }

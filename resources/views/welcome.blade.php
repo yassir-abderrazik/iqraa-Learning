@@ -17,8 +17,9 @@
                 </div>
                 <div class="col-md-6 mt-5 text-center mt-3 d-none d-md-block">
                     <center>
-                        <img src="{{ asset('/storage/image-learn.webp') }}" alt="" srcset="" style="  border-radius: 50%;
-                                                                                                    " class="img-fluid">
+                        <img src="{{ asset('/storage/image-learn.webp') }}" alt="" srcset=""
+                            style="  border-radius: 50%;
+                                                                                                                                " class="img-fluid">
                     </center>
                 </div>
             </div>
@@ -109,8 +110,8 @@
                     offrons les
                     outils et les compétences nécessaires pour enseigner ce que vous aimez.</p>
                 <center>
-
-                    <button type="submit" class="btn text-white" style="background-color: #0099FF;">contactez-nous</button>
+                    <a href="{{ route('formateurRequest') }}" class="btn text-white"
+                        style="background-color: #0099FF;">contactez-nous</a>
                 </center>
             </div>
         </div>

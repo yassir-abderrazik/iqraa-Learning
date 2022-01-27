@@ -18,6 +18,10 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
+Route::get('/request/formateur', function () {
+    return view('home.formateurRequest');
+})->name('formateurRequest');
+
 Auth::routes();
 
 Route::get('/categories/{category}', [App\Http\Controllers\HomeController::class, 'searchCategories'])->name('searchCategories');
@@ -34,8 +38,9 @@ Route::get('/dashboard/admin', [App\Http\Controllers\AdminController::class, 'in
 Route::get('/dashboard/admin/users', [App\Http\Controllers\AdminController::class, 'users'])->name('users')->middleware('admin');
 Route::post('/dashboard/admin/users/add', [App\Http\Controllers\AdminController::class, 'addUser'])->name('addUser')->middleware('admin');
 Route::get('/dashboard/admin/statistics', [App\Http\Controllers\AdminController::class, 'statistics'])->name('statisticsAdmin')->middleware('admin');
-Route::get('/dashboard/admin/courses/validation', [App\Http\Controllers\AdminController::class, 'courseValidation'])->name('courseValidation')->middleware('admin');
-Route::put('/dashboard/admin/courses/validation/{id}', [App\Http\Controllers\AdminController::class, 'validateCourse'])->name('validateCourse')->middleware('admin');
+
+Route::get('/dashboard/admin/requests/formateur', [App\Http\Controllers\AdminController::class, 'formateursRequest'])->name('formateursRequestAdmin')->middleware('admin');
+Route::put('/dashboard/admin/requests/formateur/validation/{id}', [App\Http\Controllers\AdminController::class, 'validateFormateurRequest'])->name('validateFormateurRequest')->middleware('admin');
 
 
 // route formateur
@@ -67,6 +72,10 @@ Route::get('/dashboard/student/certificat/{id}', [App\Http\Controllers\StudentCo
 Route::get('/dashboard/student/course/categorie/{category}', [App\Http\Controllers\StudentController::class, 'getStudentCourseByCategory'])->name('getStudentCourseByCategory');
 Route::post('/dashboard/student/course/search', [App\Http\Controllers\StudentController::class, 'getStudentCourseSearch'])->name('getStudentCourseSearch');
 
+//validator
+Route::get('/dashboard/validate/course', [App\Http\Controllers\ValidateController::class, 'courseValidation'])->name('dashboardValidate')->middleware('validator');
+Route::put('/dashboard/admin/courses/validation/{id}', [App\Http\Controllers\ValidateController::class, 'validateCourse'])->name('validateCourse')->middleware('validator');
 
-
+//formateur request 
+Route::post('/formateur/new/request', [App\Http\Controllers\HomeController::class, 'formateurRequest'])->name('formateurRequestAdd');
 //edit profil

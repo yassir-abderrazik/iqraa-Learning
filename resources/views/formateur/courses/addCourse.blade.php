@@ -53,7 +53,7 @@
                                 @enderror
                             </div>
                             <div class="col-md-6">
-                                <label for="price">Prix de la formation </label>
+                                <label for="price">Prix de la formation en $</label>
                                 <input type="number" class="form-control @error('price') is-invalid @enderror" name="price"
                                     id="price" min="1" value="{{ old('price', $course->price ?? null) }}">
                                 @error('price')
@@ -66,7 +66,7 @@
 
                         <div class="form-group row">
                             <div class="col-md-6">
-                                <label for="hours">Durée de la formation </label>
+                                <label for="hours">Durée de la formation (H)</label>
                                 <input type="number" class="form-control @error('hours') is-invalid @enderror" name="hours"
                                     id="hours" min="1" value="{{ old('hours', $course->hours ?? null) }}">
                                 @error('hours')

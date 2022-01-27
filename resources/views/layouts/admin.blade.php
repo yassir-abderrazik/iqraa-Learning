@@ -38,10 +38,10 @@
                 <a href="{{ route('users') }}"
                     class="list-group-item list-group-item-action bg-sidebar-admin">Gestion
                     utilisateurs</a>
+                <a href="{{ route('formateursRequestAdmin') }}"
+                    class="list-group-item list-group-item-action bg-sidebar-admin">Demande des formateurs</a>
                 <a href="{{ route('statisticsAdmin') }}"
                     class="list-group-item list-group-item-action bg-sidebar-admin">Statistiques</a>
-                <a href="{{ route('courseValidation') }}"
-                    class="list-group-item list-group-item-action bg-sidebar-admin">Validation des courses</a>
                 <a href="{{ route('statisticsAdmin') }}"
                     class="list-group-item list-group-item-action bg-sidebar-admin">Profile</a>
             </div>

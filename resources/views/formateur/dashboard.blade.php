@@ -10,7 +10,7 @@
             </div>
         </div>
 
-        <!-- Card de nombre de formations et nombre des etudians -->
+        <!-- Card de nombre de formations et nombre des etudiants -->
         <div class="row justify-content-center mb-5">
             <div class="col-md-4">
                 <div class="card text-white bg-success" style="width: 24rem; margin-right: 100px">
@@ -22,22 +22,31 @@
                                     d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                             </svg>
                         </div>
-                        <h3>Nombre des etudiants : {{ Auth::user()->id }} </h3>
+                        <h3 class="text-justify">Visiteurs intéressés par vos courses:
+                            @php
+                                $i = 0;
+                            @endphp
+                            @foreach ($courses as $course)
+                                @php
+                                    $i = $course->views + $i;
+                                @endphp
+                            @endforeach
+                            {{ $i }}
+                        </h3>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
-
                 <div class="card text-white bg-info" style="width: 24rem;">
                     <div class="card-body">
-                        <div style="margin-left: 37%">
+                        <div style="margin-left: 37%" class="mb-4">
                             <svg xmlns="http://www.w3.org/2000/svg" class="m-3" width="50px" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
                             </svg>
                         </div>
-                        <h3>Nombre des formation : {{ count($courses) }}</h3>
+                        <h3>Nombre des formations : {{ count($courses) }}</h3>
                     </div>
                 </div>
             </div>

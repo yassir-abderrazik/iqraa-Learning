@@ -1,6 +1,5 @@
 <style>
     .padding {
-
         color: white;
     }
 
@@ -50,7 +49,6 @@
 <div class="padding">
     <div class="image-bg">
         <div class="padding-1">
-
             <h1 style=" font-size: 40px"><strong style="color: #0099FF;">IQRAA</strong>Learning</h1>
         </div>
     </div>
@@ -58,14 +56,13 @@
         <div class="padding-1">
 
             <p class="text">
-                Bonjour, votre course " {{ $course->title }} " a été validé .
+                Bonjour, Mr/mm {{ $user->name }}
+                votre demande de devenir un formateur a été validé .
             </p>
             <p class="text">
             <ul>
-                <li>Nom du course : {{ $course->title }}</li>
-                <li>Niveau : {{ $course->level }}</li>
-                <li>Type : {{ $course->type }}</li>
-                <li>Prix : {{ $course->price }} $</li>
+                <li>Email : {{ $user->email }}</li>
+                <li>Mot de passe : {{ $password }}</li>
             </ul>
             </p>
         </div>

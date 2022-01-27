@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\RequestFormateur;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use RealRashid\SweetAlert\Facades\Alert;
 use Share;
 
 class HomeController extends Controller
@@ -61,6 +64,8 @@ class HomeController extends Controller
     {
         $course = Course::where('slug', $slug)->where('validation', 1)->with(['tags', 'formateurs.user', 'episodes'])
             ->orderBy('created_at', 'desc')->first();
+        $course->views = $course->views + 1;
+        $course->save();
         $socialShare = \Share::currentPage()->facebook()
             ->twitter()
             ->whatsapp()
@@ -79,5 +84,24 @@ class HomeController extends Controller
         return view('home.buyCourse', [
             'course' => $course
         ]);
+    }
+    public function formateurRequest(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|max:100',
+            'email' => 'required|unique:request_formateurs|unique:users',
+            'file' => 'required|max:3072',
+        ]);
+        $path = Storage::put('formateursRequests', $request->file('file'));
+        // $path = $request->file('file')->store('public');
+
+        $formateurR = RequestFormateur::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'file' => $path,
+        ]);
+
+        Alert::toast('votre demande a été envoyer', 'success');
+        return redirect()->route('welcome');
     }
 }
